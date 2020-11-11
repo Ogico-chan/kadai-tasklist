@@ -3,11 +3,7 @@ class TasksController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @task = Task.all
     @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-  end
-  
-  def show
   end
   
   def new
@@ -27,8 +23,6 @@ class TasksController < ApplicationController
     end
   end
   
-  def edit
-  end
 
   def update
     if @task.update(task_params)
