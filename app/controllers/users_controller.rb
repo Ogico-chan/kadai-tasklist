@@ -2,11 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
 
 
-  def show
-    @user = User.find(params[:id])
-    @tasks = @user.tasks.order(id: :desc).page(params[:page])
-  end
-
+  
   def new
     @user = User.new
   end
